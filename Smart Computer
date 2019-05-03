@@ -1,0 +1,87 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nim;
+
+import java.util.Random;
+
+/**
+ * This class represents a Smart computer following the assignment rules
+ * @author Emmanuel Hernandez
+ */
+public class Smart implements Player 
+{
+
+    /**
+     * A grab method that determines how much the computer will remove
+     * @param amountMarbles 
+     * @return the amount to be removed
+     */
+    @Override
+    public int grabbed(int amountMarbles) 
+    {
+        int amount = 0;
+
+        //checks whether the number is a multiple of 2 minus 1
+        if (amountMarbles > 63) 
+        {
+           amount = amountMarbles - 63;
+        } 
+        else if (amountMarbles == 63)
+        {
+            amount = 31;
+        }
+        else if (amountMarbles > 31) 
+        {
+
+            amount = amountMarbles - 31 ;
+        } 
+        else if (amountMarbles == 31)
+        {
+            amount = 15;
+        }
+        else if (amountMarbles > 15) 
+        {
+
+            amount =  amountMarbles - 15;
+
+        } 
+        else if(amountMarbles == 15)
+        {
+            amount = 7;
+        }
+        else if (amountMarbles > 7)
+        { 
+             amount  = amountMarbles - 7;
+        }
+        else if (amountMarbles == 7)
+        {
+            amount = 3;
+        }
+        else if (amountMarbles > 3) 
+        {
+             amount  = amountMarbles - 3;
+        } 
+        else 
+        {
+            amount = 1;
+        }
+        //Prints out how much the computer removes
+        System.out.println("SmartPC removed " + amount
+                + " marbles \n");
+        return amount;
+    }
+
+    /**
+     * Gets the name of the Smart computer playing
+     * @return the name in String
+     */
+    @Override
+    public String getName() 
+    {
+        return "SmartComputer";
+    }
+
+}
