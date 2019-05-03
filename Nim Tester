@@ -1,0 +1,178 @@
+ /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nim;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Emmanuel Hernandez
+ */
+public class NimTester {
+
+    /**
+     * This the tester of the classes where I ask the user who he wants the 
+     * game to be played, and run the game
+     * @param args
+     */
+    public static void main(String[] args) 
+    {
+        //boolean whether to keep playing or no
+        boolean cont = true;
+        while (cont)
+        {
+            System.out.println("You have started a game of Nim");
+
+            //Create player objects & game objet
+            Player player1 = null;
+            Player player2 = null;
+            Nim game = new Nim();
+
+            String play1;
+            String play2;
+            String turn;
+            String again;
+            String error = "invalid input";
+
+            // Ask the user what type of player will be playing for player 1
+            do 
+            {
+
+                play1 = JOptionPane.showInputDialog("Who will be player 1?"
+                        + " Enter Human, Smart, or Dumb");
+
+                if (play1.equalsIgnoreCase("smart")) 
+                {
+                } 
+                else if (play1.equalsIgnoreCase("human"))
+                {
+                } 
+                else if (play1.equalsIgnoreCase("dumb"))
+                {
+                } 
+                else if (!play1.equalsIgnoreCase("smart")) 
+                {
+                    System.out.println(error);
+
+                } 
+                else if (!play1.equalsIgnoreCase("human"))
+                {
+                    System.out.println(error);
+
+                } 
+                else if (!play1.equalsIgnoreCase("dumb")) 
+                {
+                    System.out.println(error);
+                }
+
+            } while (!play1.equalsIgnoreCase("smart") && 
+                    !play1.equalsIgnoreCase("human") && 
+                    !play1.equalsIgnoreCase("dumb"));
+
+            // Ask the user what type of player will be playing for player 2
+            do 
+            {
+
+                play2 = JOptionPane.showInputDialog("Who will be player 2?"
+                        + " Enter Human, Smart, or Dumb");
+
+                if (play2.equalsIgnoreCase("smart")) 
+                {
+                } 
+                else if (play2.equalsIgnoreCase("human")) 
+                {
+                } 
+                else if (play2.equalsIgnoreCase("dumb")) 
+                {
+                } 
+                else if (!play2.equalsIgnoreCase("smart")) 
+                {
+                    System.out.println(error);
+
+                } 
+                else if (!play2.equalsIgnoreCase("human")) 
+                {
+                    System.out.println(error);
+
+                } 
+                else if (!play2.equalsIgnoreCase("dumb")) 
+                {
+                    System.out.println(error);
+                }
+
+            } while (!play2.equalsIgnoreCase("smart") 
+                    && !play2.equalsIgnoreCase("human") 
+                    && !play2.equalsIgnoreCase("dumb"));
+
+            // Ask the user who will go first
+            do {
+
+      turn = JOptionPane.showInputDialog("Will player 1 go first or player 2? "
+                 + "Enter 1 for player 1 or 2 for player 2");
+
+                if (turn.equals("1") || turn.equals("2")) 
+                {
+                } 
+                else if (!turn.equals("1")) 
+                {
+                    System.out.println(error);
+                } 
+                else if (!turn.equals("2")) 
+                {
+                    System.out.println(error);
+                }
+            } while (!turn.equals("1") && !turn.equals("2"));
+
+            // player 1 check who is playing and create object
+            if (play1.equalsIgnoreCase("human"))
+            {
+                player1 = new Person();
+            } 
+            else if (play1.equalsIgnoreCase("smart"))
+            {
+                player1 = new Smart();
+            } 
+            else if (play1.equalsIgnoreCase("dumb")) 
+            {
+                player1 = new Dumb();
+            }
+
+            // player 2 check who is playing and create object
+            if (play2.equalsIgnoreCase("human")) 
+            {
+                player2 = new Person();
+            } 
+            else if (play2.equalsIgnoreCase("Smart")) 
+            {
+                player2 = new Smart();
+            } 
+            else if (play2.equalsIgnoreCase("Dumb"))
+            {
+                player2 = new Dumb();
+            }
+
+            // checks who the user wants to go first or second
+            if (turn.equals("1")) 
+            {
+                game.play(player1, player2);
+            } 
+            else if (turn.equals("2")) 
+            {
+                game.play(player2, player1);
+            }
+            //ask whether they would like to keep playing  
+            again = JOptionPane.showInputDialog("Would you like to "
+                    + "play again? Enter Y or N");
+            if (!again.equalsIgnoreCase("y")) 
+            {
+                cont = false;
+            }
+
+        }
+
+    }
+
+}
