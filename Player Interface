@@ -1,0 +1,35 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nim;
+
+/**
+ * This is the interface Player that is implemented in other classes. It has a 
+ * int to remove a certain amount of marbles and is able to return the name of 
+ * the user
+ * @author Emmanuel Hernandez
+ */
+public interface Player {
+    
+  
+  /**
+   * @param amountMarbles the amount of marbles currently inside the pile
+   * @return the amount of marbles the player wants to remove
+   */
+  int grabbed(int amountMarbles);
+
+  
+  
+  
+  /**
+   * A string to return the names of the objects
+   * @return the name in String 
+   */
+   String getName();
+
+ 
+    }
+    
+
