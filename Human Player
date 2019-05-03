@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nim;
+import javax.swing.JOptionPane;
+
+/**
+ * This class represents the Human in the game of Nim and implements the Player 
+ * interface 
+ * @author Emmanuel Hernandez
+ */
+public class Person implements Player {
+    
+    /**
+     * Constructs a human player with a name given by the user
+     */
+    private String name = "";
+    public Person()
+    { 
+         name = JOptionPane.showInputDialog("Enter the name of the player");
+    }
+ 
+    /**
+     * A grab method that determines whether the amount grabbed by the user is a 
+     * valid amount and returns that amount to be removed
+     * @param amountMarbles
+     * @return amount removed by human 
+     */
+    @Override
+    public int grabbed(int amountMarbles)
+    {
+          String input; //empty string
+          int amount;   //empty int
+          
+         //ask the user  for a valid number
+          input = JOptionPane.showInputDialog("grab between 1 "
+                  + "and  " + amountMarbles/2 );
+          amount = Integer.parseInt(input);
+        
+          // Makes var Half an int of half the size of marbles
+           int half = amountMarbles/2;
+
+           //while input is not valid
+           do
+           { 
+             if(amount <0 || half < amount)
+             {
+             System.out.println("Sorry that is an invalid input");
+             input = JOptionPane.showInputDialog("Remove between 1 "
+                  + "and less than " + amountMarbles/2 );
+             amount = Integer.parseInt(input);
+             }
+           }while (amount < 0 || half < amount);
+           //Prints out how much the human removed
+           System.out.println(name + " removed " + amount + 
+                  " of marbles from pile \n");
+           return amount;
+        
+        
+    }
+        
+   /**
+    * A string to return the name
+    * @return the name in String
+    */
+    @Override
+    public String getName() 
+    {
+       return name;
+    }
+    
+}
