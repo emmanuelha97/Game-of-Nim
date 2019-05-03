@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nim;
+
+/**
+ *This class hold the method to play the game of Nim with two interface types
+ * @author Emmanuel Hernandez
+ */
+public class Nim {
+
+   // pile of marbles
+    private PileOfMarbles amountMarbles; 
+
+    /**
+     * Creates a pile of marbles
+     */
+    public Nim() 
+    {
+        amountMarbles = new PileOfMarbles();
+    }
+
+    /**
+     * This play methods runs the game at least once and determines the winner.
+     * It has the first person go first ...
+     * @param person1 first player
+     * @param person2 second player
+     */
+    public void play(Player person1, Player person2) 
+    {
+        System.out.println("Starting the legendary game of Nim...");
+        boolean won = false;                            //
+
+        System.out.println(person1.getName() + " is going against "
+                + person2.getName());
+
+        //Prints amount of marbles in the beginning of the game
+        System.out.println("New game has " + amountMarbles.getMarblePile()
+                + " marbles");
+
+        //while loop to make the game run
+         while (won == false) 
+        {
+            // first player removes amount of marbles
+            int move = person1.grabbed(amountMarbles.getMarblePile());
+            // removes marbles from pile
+            amountMarbles.remove(move); 
+            System.out.println("There are " + amountMarbles.getMarblePile()
+                    + " remaining in the pile");
+
+            //if the amount of marbles left is 1 then person 1 wins
+            if (amountMarbles.getMarblePile() == 1 && !won) 
+            {
+                System.out.println(person1.getName() + " Won the game");
+                won = true;
+
+            }
+            //if no one has won yet
+            if (!won) 
+            {
+                // second player removes amount of marbles
+                move = person2.grabbed(amountMarbles.getMarblePile());
+                // removes marbles from pile
+                amountMarbles.remove(move); 
+                System.out.println("There are " + amountMarbles.getMarblePile()
+                        + " remaining in the pile");
+
+            }
+            //if the amount of marbles left is 1 then person 2 wins
+            if (amountMarbles.getMarblePile() == 1 && !won) 
+            {
+                System.out.println(person2.getName() + " Won the game");
+                won = true;
+            }
+
+        }
+
+    }
+
+}
