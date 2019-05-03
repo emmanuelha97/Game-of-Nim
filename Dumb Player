@@ -1,0 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nim;
+import java.util.Random;
+
+/**
+ * This class represents the DumbComputer class following the assignment rules
+ * @author Emmanuel Hernandez
+ */
+public class Dumb implements Player {
+   
+   /**
+     * A grab method that determines how much the computer will remove
+     * @param amountMarbles
+     * @return amount removed by DumbComputer
+     */
+    @Override
+    public int grabbed(int amountMarbles)
+    {
+        //Creates a random number generator object
+        Random num = new Random();
+        int amount;
+        // removes between 1 and less than half the marbles
+        amount = num.nextInt(amountMarbles/2) + 1;
+        //Prints out how much the computer removes
+        System.out.println("DumbPC removed " + amount + 
+                " marbles \n");
+        return amount;
+        
+    }
+    /**
+     * A string to return the name
+     * @return the name in String
+     */
+    @Override
+    public String getName() 
+    {
+        return "DumbPC";
+    }
+
+
+}
