@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nim;
+
+import java.util.Random;
+
+/**
+ * This class holds the marbles in a pile and is able to return the amount
+ * inside and generate a random pile each time
+ *
+ * @author Emmanuel Hernandez
+ */
+public class PileOfMarbles {
+
+    public int marblePile; // amount of marbles in pile
+
+    
+    /**
+     * Removes a certain amount of marbles from a pile
+     * @param amount removed from pile
+     */
+    public void remove(int marbles) 
+    {
+        marblePile -= marbles;
+    }
+    
+    //Creates a pile of marbles between 10 and 99 inclusive
+    public PileOfMarbles() 
+    {
+        Random num = new Random();
+        marblePile = num.nextInt(91) + 10;
+    }
+
+    /**
+     * Returns the amount of marbles in the pile
+     * @return marblePile size of pile
+     */
+    public int getMarblePile() 
+    {
+        return marblePile;
+    }
+
+  
+
+}
